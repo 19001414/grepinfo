@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="./css/bootstrap.css">
+    <link rel="stylesheet" href="./css/bootstrap-datetimepicker.min.css">
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="./js/jquery.js"></script>
+    <!--<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>-->
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="./js/bootstrap.js"></script>
+    <script src="./js/bootstrap-datetimepicker.min.js"></script>
+    <script src="./js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+    <link rel="stylesheet" href="grepcss.css" />
+    <script src="./src/main.js"></script>
+</head>
+<body>
+    <div class="list">
+        <ul>
+            <li class="active"><span class="glyphicon glyphicon-record"></span>字符串匹配测试</li>
+            <li><span class="glyphicon glyphicon-record"></span>DOM测试</li>
+            <li><span class="glyphicon glyphicon-record"></span>brower Object测试</li>
+        </ul>
+    </div>
+
+    <div class="left">
+        <div class="myrow">
+            <h3 class="title">基本查找</h3>
+        </div>
+        <div class="myrow">
+            <div class="continer">
+                <span class="label">查询字符串</span>
+                <span class="content">
+                    <textarea class="searchvalue" placeholder="字符串、url" data-type="buffer"></textarea>
+                </span>
+                <label style="height: 30px;width: 60px;color: #BBBABC;font-size:12px;">字符串<input type="radio" name="searchtype" class="searchtype" checked="checked" data-type="str"></label>
+                <label style="height: 30px;width: 40px;color: #BBBABC;font-size:12px;">Url<input type="radio" name="searchtype" class="searchtype" data-type="url"></label>
+                <span class="urlconfig one">
+                    <span class="configinput">
+                        <input type="text" placeholder="key"/><input type="text" placeholder="value" /><span class="myadd" title="添加">+</span><span class="myclose" title="删除">&times;</span>
+                    </span>
+                </span>
+            </div>
+        </div>
+        <div class="myrow">
+            <div class="continer">
+                <span class="label">开始字符串<span style="color: red;">*</span></span>
+                <span class="content">
+                    <textarea class="searchvalue" placeholder="字符串" data-type="s"></textarea>
+                </span>
+            </div>
+        </div>
+        <div class="myrow">
+            <div class="continer">
+                <span class="label">结束字符串<span style="color: red;">*</span></span>
+                <span class="content">
+                    <textarea class="searchvalue" placeholder="字符串" data-type="e"></textarea>
+                </span>
+            </div>
+        </div>
+        <div class="myrow">
+            <div class="continer">
+                <span class="label">开始字符串下一个特征点</span>
+                <span class="content">
+                    <textarea class="searchvalue" placeholder="字符串" data-type="sf"></textarea>
+                </span>
+            </div>
+        </div>
+        <div class="myrow">
+            <div class="continer">
+                <span class="label">结束字符串下一个特征点</span>
+                <span class="content">
+                    <textarea class="searchvalue" placeholder="字符串" data-type="ef"></textarea>
+                </span>
+            </div>
+        </div>
+        <div class="myrow" style="width: 500px;">
+            <div class="continer" style="width: 200px;height: 60px;">
+                <span class="label">是否包含开始字符串</span>
+                <span class="content myswitchc">
+                    <label class="myswitch">
+                        <input type="checkbox">
+                        <div class="myslider round" data-type="si"></div>
+                    </label>
+                </span>
+            </div>
+            <div class="continer" style="width: 200px;height: 60px;">
+                <span class="label">是否包含结束字符串</span>
+                <span class="content myswitchc">
+                    <label class="myswitch">
+                        <input type="checkbox">
+                        <div class="myslider round" data-type="ei"></div>
+                    </label>
+                </span>
+            </div>
+            <div class="continer" style="width: 200px;height: 60px;">
+                <span class="label">是否从后往前查找</span>
+                <span class="content myswitchc">
+                    <label class="myswitch">
+                        <input type="checkbox">
+                        <div class="myslider round" data-type="bw"></div>
+                    </label>
+                </span>
+            </div>
+            <div class="continer" style="width: 200px;height: 60px;">
+                <span class="label">是否忽略错误</span>
+                <span class="content myswitchc">
+                    <label class="myswitch">
+                        <input type="checkbox">
+                        <div class="myslider round" data-type="tl"></div>
+                    </label>
+                </span>
+            </div>
+        </div>
+        <div class="myrow">
+
+        </div>
+        <div class="myrow">
+            <div class="continer" style="border: none;">
+                <span class="content">
+                    <button class="submit">提交</button>
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="right">
+        <div class="myrow header">
+            <h3 class="title">查找结果</h3>
+            <ul class="nav nav-tabs str" role="tablist">
+                <li role="presentation" class="active strrs"><a href="#result" data-page="result" aria-controls="result" role="tab" data-toggle="tab">查询结果</a></li>
+                <li class="originpage" role="presentation"><a href="#originpage" data-page="originpage" aria-controls="originpage" role="tab" data-toggle="tab">原始页面</a></li>
+                <li class="pageText" role="presentation"><a href="#pageText" data-page="pageText" aria-controls="pageText" role="tab" data-toggle="tab">页面字符</a></li>
+            </ul>
+        </div>
+        <div class="result">
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane fade in active" id="result"></div>
+                <div role="tabpanel" class="tab-pane fade" id="originpage"></div>
+                <div role="tabpanel" class="tab-pane fade" id="pageText"></div>
+            </div>
+        </div>
+    </div>
+</body>
+<script type="templete" id="tpl">
+    <div class="myrow" style="text-align: center">
+        <h2 class="s_success searchHead"><span class="glyphicon glyphicon-ok-sign"></span>查询成功</h2>
+    </div>
+        <div class="myrow">
+        <div class="continer">
+            <span class="label">查询结果</span>
+            <span class="content" style="width: 100%;">
+                <p class="searchresult" style="line-height: 1;width: 100%;"></p>
+            </span>
+        </div>
+    </div>
+    <div class="myrow">
+        <div class="continer">
+            <span class="label">开始位置</span>
+            <span class="content" style="width: 100%;">
+                <p class="startIndex" style="line-height: 1;width: 100%;"></p>
+            </span>
+        </div>
+    </div>
+    <div class="myrow">
+        <div class="continer">
+            <span class="label">查询字符串</span>
+            <span class="content" style="width: 100%;">
+                <p class="searchText" style="line-height: 1;width: 100%;"></p>
+            </span>
+        </div>
+    </div>
+</script>
+</html>

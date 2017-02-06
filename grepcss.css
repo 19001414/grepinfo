@@ -1,0 +1,340 @@
+* { padding: 0; margin: 0;}
+html    { height: 100%;}
+body    { height: 100%;font-family: tahoma,"Microsoft YaHei",Arial,Helvetica,sans-serif,"宋体";overflow-y: scroll;background-color: #F3F6F8;}
+.list {
+    margin: 0 0 10px 0;
+    height: 50px;
+    background-color: #fff;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 0 10px #aaa;
+}
+.list ul {
+    list-style-type: none;
+    height: 50px;
+    overflow: hidden;
+    width: 540px;
+    padding: 0;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+.list ul li {
+    float: left;
+    margin: 0;
+    height: 48px;
+    line-height: 48px;
+    width: 180px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #B5BABC;
+    border-top: 3px solid transparent;
+}
+.list ul li:hover {
+    cursor: pointer;
+    /*background-color: #528FCC;*/
+    color: #B9CF43;
+    border-top: 3px solid #B9CF43;
+}
+
+.list ul li.active {
+    /*background-color: #528FCC;*/
+    color: #B9CF43;
+    border-top: 3px solid #B9CF43;
+}
+.list ul li.active span {
+    color: #B9CF43;
+}
+.list ul li:hover span {
+    color: #B9CF43;
+}
+
+
+
+.left {
+    width: 740px;
+    position: relative;
+    float: left;
+    background-color: #fff;
+    margin-left: 10px;
+    border-radius: 4px;
+    box-shadow: 0 0 10px #aaa;
+}
+.right {
+    margin-left: 755px;
+    margin-right: 10px;
+    position: relative;
+    /*background-color: #fff;*/
+    border-radius: 8px;
+    /*box-shadow: 0 0 15px #aaa;*/
+    max-height: 750px;
+    overflow: auto;
+}
+
+.right .myrow .title                {  width: 95%;text-align: right;margin: 0;padding:0;border:none;position: absolute;right: 10px;}
+.right .myrow .result               {  text-align: center;  }
+.right .myrow .continer             {  width: 95%;  }
+.right .myrow .continer .label      {  line-height: 1;  }
+.right .myrow .continer .content    {  min-height: 100px;margin-top:10px;border-radius: 8px;border: 1px solid #eee;  }
+
+
+.right .myrow.header ul.str li.originpage           {  display: none;  }
+.right .myrow.header ul.str li.pageText             {  display: none;  }
+.right .myrow.header li.active                      {  background-color: #F3F6F8;  }
+.right .myrow.header li a                           {  color: #B5BABC;  }
+.right .myrow.header li.active a                    {  background: linear-gradient( to bottom, #EEEEEE, #F3F6F8);color: #F1594B;  }
+.right #originpage iframe                           { height: 700px;width: 100%;}
+
+
+
+.myrow {
+    overflow: hidden;
+    position: relative;
+    padding: 0 0 0 20px;
+}
+.myrow .title {
+    display: inline-block;
+    margin: 0 0 20px 10px;
+    padding-bottom: 4px;
+    width: 95%;
+    border-bottom: 1px solid #EEEEEE;
+    color: #B5BABC;
+}
+.myrow .s_success {
+    color: #ABD037;
+}
+.myrow .s_error {
+    color: #E26C5D;
+}
+.myrow .continer {
+    width: 100%;
+    /*border-bottom: 1px solid #EDEEEE;*/
+    overflow: hidden;
+    display: inline-block;
+}
+
+/*url配置*/
+.myrow .continer .urlconfig {
+    display: inline-block;
+    padding: 0 0 0 30px;
+    margin: 0;
+    visibility: hidden;
+    overflow: hidden;
+    opacity: 0;
+    min-height: 0;
+    max-height: 0;
+    transition: all 0.4s;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+}
+.myrow .continer .urlconfig.myshow {
+    display: block !important;
+    overflow: auto;
+    visibility: visible;
+    opacity: 1;
+    min-height: 60px;
+    max-height: 300px;
+}
+
+.myrow .continer .urlconfig input {
+    border: none;
+    border-bottom: 1px solid #eee;
+    margin: 0 0 0 10px;
+    width: 300px;
+    transition: all 0.2s;
+}
+.myrow .continer .urlconfig input:focus {
+    outline: none;
+    border-color: #ABD037;
+}
+.myrow .continer .urlconfig .myclose {
+    background-color: #FAFAFA;
+    color: #B4B4B4;
+    width: 20px;
+    height: 20px;
+    padding-left: 5px;
+    border-radius: 4px;
+    display: inline-block;
+    transition: all 0.2s;
+    margin: 5px 0;
+}
+.myrow .continer .urlconfig.one .myclose {
+    background-color: #FAFAFA;
+    color: #B4B4B4;
+    width: 20px;
+    height: 20px;
+    padding-left: 5px;
+    border-radius: 4px;
+    display: inline-block;
+    transition: all 0.2s;
+    visibility: hidden;
+}
+.myrow .continer .urlconfig .myclose:hover {
+    background-color: #DEDEDE;
+    cursor: pointer;
+    color: #F47023;
+}
+.myrow .continer .urlconfig .myadd {
+    background-color: #FAFAFA;
+    color: #B4B4B4;
+    width: 20px;
+    height: 20px;
+    padding-left: 5px;
+    border-radius: 4px;
+    display: inline-block;
+    transition: all 0.2s;
+}
+.myrow .continer .urlconfig .myadd:hover {
+    background-color: #DEDEDE;
+    cursor: pointer;
+    color: #F47023;
+}
+.myrow .continer .urlconfig .configinput {
+    display: inline-block;
+}
+
+/*标题*/
+.myrow .continer .label {
+    display: inline-block;
+    float: left;
+    height: 100%;
+    width: 130px;
+    margin:0;
+    line-height: 60px;
+    color: #B5BABC;
+    text-align: left;
+}
+
+/*开关包含div样式*/
+.myrow .continer .myswitchc {
+    margin-left: 0 !important;
+}
+
+/*输入框*/
+.myrow .continer .searchtype {
+    width: 12px;
+    height: 12px;
+    margin: 0 5px;
+}
+
+/*内容*/
+.myrow .continer .content {
+    display: inline-block;
+    height: 100%;
+    margin-left: 20px;
+    line-height: 80px;
+    color: #B5BABC;
+}
+.myrow .continer .content input {
+    border: 1px solid #DCE4E6;
+    height: 30px;
+    width: 260px;
+    border-radius: 4px;
+    color: #000;
+}
+.myrow .continer .content textarea {
+    border: 1px solid #DCE4E6;
+    height: 30px;
+    width: 460px;
+    max-width: 460px;
+    border-radius: 4px;
+    color: #000;
+    text-align: left;
+    line-height: 14px;
+    transition: all 0.6s;
+}
+.myrow .continer .content textarea:focus {
+    height: 100px !important;
+    outline: none;
+    border-color: #ABD037;
+}
+.myrow .continer .content button {
+    border: none;
+    height: 40px;
+    border-radius: 20px;
+    width: 120px;
+    color: #fff;
+    line-height: 40px;
+    letter-spacing: 5px;
+    background-color: #ABD037;
+    transition: all 0.2s;
+}
+.myrow .continer .content button:hover {
+    height: 40px;
+    border-radius: 20px;
+    width: 120px;
+    color: #fff;
+    line-height: 40px;
+    letter-spacing: 5px;
+    cursor: pointer;
+    background-color: #8DAD27;
+}
+.myrow .continer .content button:focus {
+    outline: none;
+}
+.myrow .continer .content p {
+    overflow-x: auto;
+}
+
+/*switch*/
+/*开关*/
+.myswitch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 23px;
+}
+
+.myswitch input {display:none;}
+
+.myslider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.myslider:before {
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 20px;
+    left: 4px;
+    top: 1px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.myswitch input:checked + .myslider {
+    background-color: #2196F3;
+}
+
+.myswitch input:focus + .myslider {
+    box-shadow: 0 0 1px #2196F3;
+}
+
+.myswitch input:checked + .myslider:before {
+    -webkit-transform: translateX(14px);
+    -ms-transform: translateX(14px);
+    transform: translateX(14px);
+}
+
+/* Rounded sliders */
+.myslider.round {
+    border-radius: 34px;
+}
+
+.myslider.round:before {
+    border-radius: 50%;
+}
+
+/*word-wrap: break-word;
+word-break: normal; */
