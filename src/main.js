@@ -48,6 +48,7 @@ $(function () {
         console.log(torf)
         if(result[type] && torf===false){
             console.log('忽略错误')
+            //alert('您已忽略错误')
         }else {
             // 处理str
             if (searchType === 'str') {
@@ -112,14 +113,16 @@ $(function () {
 
 // 处理失败
     function searchFail(buffer, searchType) {
-        if((torf===false)){
+        if(result.tl){
+            console.log('忽略错误哦~')
+        }else if(torf === false){
             var $head, $sign, $navbar;
             $navbar = $('.result header').find('.nav-tabs');
             $navbar.toggleClass('str', (searchType === 'str'));
             searchSuccess(buffer, '', '');
             $head = $(document.body).find('.searchHead');
             $sign = $head.find('span');
-            $head.removeClass('s_success').addClass('s_error').html('查询失败');
+            $head.removeClass('s_success').addClass('s_error').html('查找失败');
             $sign.removeClass('glyphicon-ok-sign').addClass('glyphicon glyphicon-remove-sign');
             $sign.prependTo($head);
         }
