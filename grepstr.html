@@ -15,6 +15,7 @@
     <script src="./js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
     <link rel="stylesheet" href="grepcss.css" />
     <script src="./src/main.js"></script>
+    <script src='./js/jquery.dragsort-0.5.2.js'></script>
 </head>
 <body>
     <div class="list">
@@ -45,82 +46,193 @@
             </div>
         </div>
         <div class="myrow">
-            <div class="continer">
-                <span class="label">开始字符串<span style="color: red;">*</span></span>
-                <span class="content">
+            <table id="tab11" style="display: none">
+                <tbody>
+                <tr style='display: none'>
+                    <td align="center">
+                        <div class="myrow">
+                            <div class="continer">
+                                <span class="label">开始字符串<span style="color: red;">*</span></span>
+                                <span class="content">
                     <textarea class="searchvalue" placeholder="字符串" data-type="s"></textarea>
                 </span>
-            </div>
-        </div>
-        <div class="myrow">
-            <div class="continer">
-                <span class="label">结束字符串<span style="color: red;">*</span></span>
-                <span class="content">
+                            </div>
+                        </div>
+                        <div class="myrow">
+                            <div class="continer">
+                                <span class="label">结束字符串<span style="color: red;">*</span></span>
+                                <span class="content">
                     <textarea class="searchvalue" placeholder="字符串" data-type="e"></textarea>
                 </span>
-            </div>
-        </div>
-        <div class="myrow">
-            <div class="continer">
-                <span class="label">开始字符串下一个特征点</span>
-                <span class="content">
+                            </div>
+                        </div>
+                        <div class="myrow">
+                            <div class="continer">
+                                <span class="label">开始字符串下一个特征点</span>
+                                <span class="content">
                     <textarea class="searchvalue" placeholder="字符串" data-type="sf"></textarea>
                 </span>
-            </div>
-        </div>
-        <div class="myrow">
-            <div class="continer">
-                <span class="label">结束字符串下一个特征点</span>
-                <span class="content">
+                            </div>
+                        </div>
+                        <div class="myrow">
+                            <div class="continer">
+                                <span class="label">结束字符串下一个特征点</span>
+                                <span class="content">
                     <textarea class="searchvalue" placeholder="字符串" data-type="ef"></textarea>
                 </span>
-            </div>
-        </div>
-        <div class="myrow" style="width: 500px;">
-            <div class="continer" style="width: 200px;height: 60px;">
-                <span class="label">是否包含开始字符串</span>
-                <span class="content myswitchc">
+                            </div>
+                        </div>
+                        <div class="myrow" style="width: 500px;">
+                            <div class="continer" style="width: 200px;height: 60px;">
+                                <span class="label">是否包含开始字符串</span>
+                                <span class="content myswitchc">
                     <label class="myswitch">
                         <input type="checkbox">
                         <div class="myslider round" data-type="si"></div>
                     </label>
                 </span>
-            </div>
-            <div class="continer" style="width: 200px;height: 60px;">
-                <span class="label">是否包含结束字符串</span>
-                <span class="content myswitchc">
+                            </div>
+                            <div class="continer" style="width: 200px;height: 60px;">
+                                <span class="label">是否包含结束字符串</span>
+                                <span class="content myswitchc">
                     <label class="myswitch">
                         <input type="checkbox">
                         <div class="myslider round" data-type="ei"></div>
                     </label>
                 </span>
-            </div>
-            <div class="continer" style="width: 200px;height: 60px;">
-                <span class="label">是否从后往前查找</span>
-                <span class="content myswitchc">
+                            </div>
+                            <div class="continer" style="width: 200px;height: 60px;">
+                                <span class="label">是否从后往前查找</span>
+                                <span class="content myswitchc">
                     <label class="myswitch">
                         <input type="checkbox">
                         <div class="myslider round" data-type="bw"></div>
                     </label>
                 </span>
-            </div>
-            <div class="continer" style="width: 200px;height: 60px;">
-                <span class="label">是否忽略错误</span>
-                <span class="content myswitchc">
+                            </div>
+                            <div class="continer" style="width: 200px;height: 60px;">
+                                <span class="label">是否忽略错误</span>
+                                <span class="content myswitchc">
                     <label class="myswitch">
                         <input type="checkbox">
                         <div class="myslider round" data-type="tl"></div>
                     </label>
                 </span>
+                            </div>
+                        </div>
+                    </td>
+                    <td valign='top'>
+                        <input class="btn btn-default" type="button" value="删除">
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <div class='navTop'>
+                <input class="btn btn-default" type="button" id="btn_addtr" value="添加更多查询条件">
+                <!--<input class="btn btn-default" type="button" id="testBtn" value="获得所有table下tr的数据">-->
+                <ul class='itemNum list-unstyled numList'>
+                    <li class='active'>
+                        <span>1</span>
+                    </li>
+                </ul>
             </div>
-        </div>
-        <div class="myrow">
-
+            <!--<div class='innerContainer'>-->
+                <table id="dynamicTable" width="700" border="0" cellspacing="0" cellpadding="0">
+                    <tbody>
+                    <tr>
+                        <td align="center">
+                            <div class="myrow">
+                                <div class="continer">
+                                    <span class="label">开始字符串<span style="color: red;">*</span></span>
+                                    <span class="content">
+                    <textarea class="searchvalue" placeholder="字符串" data-type="s"></textarea>
+                </span>
+                                </div>
+                            </div>
+                            <div class="myrow">
+                                <div class="continer">
+                                    <span class="label">结束字符串<span style="color: red;">*</span></span>
+                                    <span class="content">
+                    <textarea class="searchvalue" placeholder="字符串" data-type="e"></textarea>
+                </span>
+                                </div>
+                            </div>
+                            <div class="myrow">
+                                <div class="continer">
+                                    <span class="label">开始字符串下一个特征点</span>
+                                    <span class="content">
+                    <textarea class="searchvalue" placeholder="字符串" data-type="sf"></textarea>
+                </span>
+                                </div>
+                            </div>
+                            <div class="myrow">
+                                <div class="continer">
+                                    <span class="label">结束字符串下一个特征点</span>
+                                    <span class="content">
+                    <textarea class="searchvalue" placeholder="字符串" data-type="ef"></textarea>
+                </span>
+                                </div>
+                            </div>
+                            <div class="myrow" style="width: 500px;">
+                                <div class="continer" style="width: 200px;height: 60px;">
+                                    <span class="label">是否包含开始字符串</span>
+                                    <span class="content myswitchc">
+                    <label class="myswitch">
+                        <input type="checkbox">
+                        <div class="myslider round" data-type="si"></div>
+                    </label>
+                </span>
+                                </div>
+                                <div class="continer" style="width: 200px;height: 60px;">
+                                    <span class="label">是否包含结束字符串</span>
+                                    <span class="content myswitchc">
+                    <label class="myswitch">
+                        <input type="checkbox">
+                        <div class="myslider round" data-type="ei"></div>
+                    </label>
+                </span>
+                                </div>
+                                <div class="continer" style="width: 200px;height: 60px;">
+                                    <span class="label">是否从后往前查找</span>
+                                    <span class="content myswitchc">
+                    <label class="myswitch">
+                        <input type="checkbox">
+                        <div class="myslider round" data-type="bw"></div>
+                    </label>
+                </span>
+                                </div>
+                                <div class="continer" style="width: 200px;height: 60px;">
+                                    <span class="label">是否忽略错误</span>
+                                    <span class="content myswitchc">
+                    <label class="myswitch">
+                        <input type="checkbox">
+                        <div class="myslider round" data-type="tl"></div>
+                    </label>
+                </span>
+                                </div>
+                            </div>
+                        </td>
+                        <td valign=top>
+                            <input class="btn btn-default" type="button"value="删除">
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            <!--</div>-->
         </div>
         <div class="myrow">
             <div class="continer" style="border: none;">
                 <span class="content">
                     <button class="submit">提交</button>
+                </span>
+            </div>
+            <div class="continer" style="width: 200px;height: 60px;">
+                <span class="label">是否忽略全部错误</span>
+                <span class="content myswitchc">
+                    <label class="myswitch">
+                        <input type="checkbox">
+                        <div class="myslider round" data-type="allMist"></div>
+                    </label>
                 </span>
             </div>
         </div>
@@ -160,6 +272,14 @@
             <span class="label">开始位置</span>
             <span class="content" style="width: 100%;">
                 <p class="startIndex" style="line-height: 1;width: 100%;"></p>
+            </span>
+        </div>
+    </div>
+        <div class="myrow">
+        <div class="continer">
+            <span class="label">索引位置</span>
+            <span class="content" style="width: 100%;">
+                <p class="indexLoc" style="line-height: 1;width: 100%;"></p>
             </span>
         </div>
     </div>
